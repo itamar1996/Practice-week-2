@@ -6,7 +6,40 @@
 דרישות לתרגיל 2
 צור פונקציה בשם removeDuplicates.הפונקציה תקבל מערך של מספרים בתור פרמטר.הפונקציה תסיר את כל המספרים הכפולים ותשמור רק מספרים ייחודיים.החזר מערך חדש שבו כל מספר מופיע רק פעם אחת, בסדר שבו הוא הופיע לראשונה.
 דרישות תרגיל 3
-צור פונקציה בשם capitalizeFirstLetter.הפונקציה תקבל מחרוזת בתור פרמטר.הפונקציה תעבור על כל מילה במחרוזת.אם מילה אינה מסתיימת בנקודה, הפונקציה תשנה את האות הראשונה שלה לאות גדולה.החזר את המחרוזת המעודכנת. */
+צור פונקציה בשם capitalizeFirstLetter.הפונקציה תקבל מחרוזת בתור פרמטר.הפונקציה תעבור על כל מילה במחרוזת.אם מילה אינה מסתיימת בנקודה, הפונקציה תשנה את האות הראשונה שלה לאות גדולה.החזר את המחרוזת המעודכנת.
+דרישות תרגיל 4
+צור פונקציה בשם saveTasks שתשמור רשימת משימות ב-LocalStorage.צור פונקציה בשם loadTasks שתטען את רשימת המשימות מ-LocalStorage.צור פונקציה בשם addTask שתוסיף משימה לרשימה ותשמור את הרשימה המעודכנת ב-LocalStorage.צור פונקציה בשם removeTask שתסיר משימה מהרשימה ותשמור את הרשימה המעודכנת ב-LocalStorage.
+השתמש ב-LocalStorage כדי לשמור ולקרוא את נתוני המשימות.רשימת המשימות צריכה להיות מערך של אובייקטים, כאשר כל אובייקט מכיל את המפתחות: id (מספר ייחודי) ו-task (תיאור המשימה). */
+
+let saveTasks = (tasks)=>{
+    localStorage.setItem("taskslist",JSON.stringify( tasks));
+}
+let loadTasks = ()=>{
+    return JSON.parse( localStorage.getItem("taskslist"));
+}
+let addTask = (newtask)=>{
+    let taskslist = loadTasks();
+    taskslist.push(newtask);
+    saveTasks(taskslist);
+}
+
+let removeTask = (newtask)=>{
+    let taskslist = loadTasks();
+    taskslist = taskslist.filter((task) => task.id != newtask.id);
+    saveTasks(taskslist)
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 let str2 = "helo world. itamar lavan is hear.";
 let chancestr = (str) => {
